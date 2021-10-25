@@ -4,10 +4,6 @@ export default class Input extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            value: ''
-        }
-
         this.checkField = this.checkField.bind(this);
     }
 
@@ -17,22 +13,20 @@ export default class Input extends React.Component {
                     : /^[\d]+$/;
 
         if (value.match(re)) {
-            this.setState({ value });
-            this.props.onFinish(parseFloat(value));
+            this.props.onFinish(value);
         } else if (value === '') {
-            this.setState({ value });
             this.props.onFinish(null);
         }
     }
 
     render() {
-        const { value } = this.state;
+        const { value, name } = this.props;
         return (
-            <div className={`input-area ${this.props.name}`}>
+            <div className={`input-area ${name}`}>
                 <input
                     placeholder="0"
                     value={value}
-                    onChange={(event) => {this.checkField(this.props.name, event.target.value)}}
+                    onChange={(event) => {this.checkField(name, event.target.value)}}
                 />
             </div>
         )

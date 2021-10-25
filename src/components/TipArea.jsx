@@ -6,33 +6,25 @@ export default class TipArea extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            activeTip: null,
-            inputValue: '',
-        }
-
         this.tipSelect = this.tipSelect.bind(this);
         this.checkField = this.checkField.bind(this);
     }
 
     tipSelect(index, value) {
-        this.setState({ activeTip: index, inputValue: '' });
-        this.props.onTipChange(value);
+        this.props.onTipChange(value, index);
     }
     
     checkField(event) {
         const value = event.target.value;
         if (value.match(/^\d+.?\d*$/)) {
-            this.setState({ inputValue: value, activeTip: null });
-            this.props.onTipChange(parseFloat(value));
+            this.props.onTipChange(parseFloat(value), 6);
         } else if (value === '') {
-            this.setState({ inputValue: value, activeTip: null });
-            this.props.onTipChange(null);
+            this.props.onTipChange(null, 6);
         }
     }
 
     render() {
-        const { activeTip, inputValue } = this.state;
+        const { activeTip, inputValue } = this.props;
         return(
             <div className="area tips">
                 <p>Select Tip %</p>
@@ -42,7 +34,7 @@ export default class TipArea extends React.Component {
                 <TipButton isActive={activeTip === 4 ? "true" : "false"} pcvalue={25} onFinish={() => this.tipSelect(4, 25)} />
                 <TipButton isActive={activeTip === 5 ? "true" : "false"} pcvalue={50} onFinish={() => this.tipSelect(5, 50)} />
                 <input
-                    className="tip-input"
+                    className={`tip-input${activeTip === 6 ? ' isActive' : ''}`}
                     placeholder="CUSTOM"
                     value={inputValue}
                     onChange={this.checkField}
