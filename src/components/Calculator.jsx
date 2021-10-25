@@ -12,6 +12,7 @@ export default class Calculator extends React.Component {
             inputBill: null,
             tip: null,
             people: null,
+            inputPeople: null,
             totalTip: 0.00,
             totalBill: 0.00,
             activeTip: -1,
@@ -40,7 +41,9 @@ export default class Calculator extends React.Component {
     }
 
     resetData() {
-        this.setState({ bill: null, tip: null, people: null, activeTip: -1, inputBill: null });
+        this.setState({
+            bill: null, tip: null, people: null, activeTip: -1, inputBill: null, inputPeople: null,
+        });
     }
 
     onBillChange(value) {
@@ -48,7 +51,7 @@ export default class Calculator extends React.Component {
     }
 
     onPeopleChange(value) {
-        this.setState({ people: value });
+        this.setState({ people: value ? parseInt(value) : null, inputPeople: value});
     }
 
     onTipChange(value, index) {
@@ -56,28 +59,38 @@ export default class Calculator extends React.Component {
     }
 
     render() {
-        const { bill, activeTip, people, totalTip, totalBill, tip, inputBill } = this.state;
+        const { activeTip, totalTip, totalBill, tip, inputBill, inputPeople } = this.state;
+        const buttonDisabled = !inputPeople && !tip && !inputBill ? true : false;
         return (
             <>
                 <div className="left">
                     <div className="bill area">
-                        <p>Bill</p>
+                        <p className="fieldname">Bill</p>
                         <Input
                             value={inputBill ? inputBill : ''}
                             name="bill"
                             onFinish={this.onBillChange}
                         />
                     </div>
-                    <TipArea
-                        activeTip={activeTip}
-                        inputValue={tip && activeTip === 6 ? tip : ''}
-                        onTipChange={(value, index) => this.onTipChange(value, index)}
-                    />
+                    <div className="tip area">
+                        <div className="upper-text">
+                            <p className="fieldname">Select Tip %</p>
+                            <p className={inputPeople !== '0' ? 'error-message' : 'invisible'}>
+                                Can't be zero
+                            </p>
+                        </div>
+                        <TipArea
+                            activeTip={activeTip}
+                            inputValue={tip && activeTip === 6 ? tip : ''}
+                            onTipChange={(value, index) => this.onTipChange(value, index)}
+                        />
+                    </div>
                     <div className="people area">
-                        <p>Number of People</p>
+                        <p className="fieldname">Number of People</p>
+
                         <Input
                             name="people"
-                            value={people ? people : ''}
+                            value={inputPeople ? inputPeople : ''}
                             onFinish={this.onPeopleChange}
                         />
                     </div>
@@ -101,7 +114,7 @@ export default class Calculator extends React.Component {
                             ${totalBill}
                         </div>
                     </div>
-                    <button className="reset" onClick={this.resetData}>
+                    <button className="reset" onClick={this.resetData} disabled={buttonDisabled}>
                         RESET
                     </button>
                 </div>

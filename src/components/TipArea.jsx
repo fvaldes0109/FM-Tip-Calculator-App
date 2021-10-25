@@ -26,8 +26,7 @@ export default class TipArea extends React.Component {
     render() {
         const { activeTip, inputValue } = this.props;
         return(
-            <div className="area tips">
-                <p>Select Tip %</p>
+            <div className="grid-container">
                 <TipButton isActive={activeTip === 1 ? "true" : "false"} pcvalue={5} onFinish={() => this.tipSelect(1, 5)} />
                 <TipButton isActive={activeTip === 2 ? "true" : "false"} pcvalue={10} onFinish={() => this.tipSelect(2, 10)} />
                 <TipButton isActive={activeTip === 3 ? "true" : "false"} pcvalue={15} onFinish={() => this.tipSelect(3, 15)} />
