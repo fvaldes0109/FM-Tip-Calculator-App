@@ -41,15 +41,15 @@ export default class Calculator extends React.Component {
                     <p>Bill</p>
                     <Input
                         name="bill"
-                        onFinish={(value) => this.onBillChange(value)}
+                        onFinish={this.onBillChange}
                     />
                 </div>
-                <TipArea onTipChange={(value) => this.onTipChange(value)} />
+                <TipArea onTipChange={this.onTipChange} />
                 <div className="people area">
                     <p>Number of People</p>
                     <Input
                         name="people"
-                        onFinish={(value) => this.onBillChange(value)}
+                        onFinish={this.onBillChange}
                     />
                 </div>
             </>

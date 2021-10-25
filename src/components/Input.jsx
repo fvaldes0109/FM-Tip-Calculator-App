@@ -13,11 +13,12 @@ export default class Input extends React.Component {
 
     checkField(name, value) {
         const re = name === 'bill'
-                    ? /^[\d.]*$/
+                    ? /^\d+\.?\d*$/
                     : /^[\d]*$/;
 
-        if (value.match(re) && !Number.isNaN(value)) {
+        if (value.match(re) || value === '') {
             this.setState({ value });
+            this.props.onFinish(parseFloat(value));
         }
     }
 
@@ -27,10 +28,8 @@ export default class Input extends React.Component {
             <div className={`input-area ${this.props.name}`}>
                 <input
                     placeholder="0"
-                    dir="rtl"
                     value={value}
                     onChange={(event) => {this.checkField(this.props.name, event.target.value)}}
-                    onBlur={() => this.props.onFinish(value)}
                 />
             </div>
         )
