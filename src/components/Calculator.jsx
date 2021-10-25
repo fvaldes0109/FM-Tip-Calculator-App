@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Input from './Input.jsx';
+import TipArea from './TipArea.jsx';
 
 export default class Calculator extends React.Component {
     constructor(props) {
@@ -13,6 +14,8 @@ export default class Calculator extends React.Component {
         }
 
         this.onBillChange = this.onBillChange.bind(this);
+        this.onPeopleChange = this.onPeopleChange.bind(this);
+        this.onTipChange = this.onTipChange.bind(this);
     }
 
     calculate() {
@@ -27,6 +30,10 @@ export default class Calculator extends React.Component {
         this.setState({ people: value });
     }
 
+    onTipChange(value) {
+        this.setState({ tip: value });
+    }
+
     render() {
         return (
             <>
@@ -37,10 +44,7 @@ export default class Calculator extends React.Component {
                         onFinish={(value) => this.onBillChange(value)}
                     />
                 </div>
-                <div className="tips area">
-                    <p>Select Tip %</p>
-                    
-                </div>
+                <TipArea onTipChange={(value) => this.onTipChange(value)} />
                 <div className="people area">
                     <p>Number of People</p>
                     <Input
