@@ -12,23 +12,43 @@ export default class Calculator extends React.Component {
             people: null,
         }
 
-        this.onFieldChange = this.onFieldChange.bind(this);
+        this.onBillChange = this.onBillChange.bind(this);
     }
 
     calculate() {
 
     }
 
-    onFieldChange(name, value) {
-        console.log("Cambio", name, value);
+    onBillChange(value) {
+        this.setState({ bill: value });
+    }
+
+    onPeopleChange(value) {
+        this.setState({ people: value });
     }
 
     render() {
         return (
-            <div>
-                <p>Bill</p>
-                <Input name="bill" onChange={(value) => this.onFieldChange('bill', value)} />
-            </div>
+            <>
+                <div className="bill area">
+                    <p>Bill</p>
+                    <Input
+                        name="bill"
+                        onFinish={(value) => this.onBillChange(value)}
+                    />
+                </div>
+                <div className="tips area">
+                    <p>Select Tip %</p>
+                    
+                </div>
+                <div className="people area">
+                    <p>Number of People</p>
+                    <Input
+                        name="people"
+                        onFinish={(value) => this.onBillChange(value)}
+                    />
+                </div>
+            </>
         );
     }
 }

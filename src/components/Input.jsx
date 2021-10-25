@@ -24,10 +24,13 @@ export default class Input extends React.Component {
     render() {
         const { value } = this.state;
         return (
-            <div>
+            <div className={`input-area ${this.props.name}`}>
                 <input
+                    placeholder="0"
+                    dir="rtl"
                     value={value}
                     onChange={(event) => {this.checkField(this.props.name, event.target.value)}}
+                    onBlur={() => this.props.onFinish(value)}
                 />
             </div>
         )
