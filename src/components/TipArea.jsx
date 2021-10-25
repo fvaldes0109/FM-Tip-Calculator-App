@@ -16,15 +16,18 @@ export default class TipArea extends React.Component {
     }
 
     tipSelect(index, value) {
-        this.setState({ activeTip: index });
+        this.setState({ activeTip: index, inputValue: '' });
         this.props.onTipChange(value);
     }
     
     checkField(event) {
         const value = event.target.value;
-        if (value.match(/^\d+.?\d*$/) || value === '') {
-            this.setState({ inputValue: value });
+        if (value.match(/^\d+.?\d*$/)) {
+            this.setState({ inputValue: value, activeTip: null });
             this.props.onTipChange(parseFloat(value));
+        } else if (value === '') {
+            this.setState({ inputValue: value, activeTip: null });
+            this.props.onTipChange(null);
         }
     }
 

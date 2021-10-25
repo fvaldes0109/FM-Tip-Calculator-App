@@ -14,11 +14,14 @@ export default class Input extends React.Component {
     checkField(name, value) {
         const re = name === 'bill'
                     ? /^\d+\.?\d*$/
-                    : /^[\d]*$/;
+                    : /^[\d]+$/;
 
-        if (value.match(re) || value === '') {
+        if (value.match(re)) {
             this.setState({ value });
             this.props.onFinish(parseFloat(value));
+        } else if (value === '') {
+            this.setState({ value });
+            this.props.onFinish(null);
         }
     }
 
