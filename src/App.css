@@ -76,7 +76,7 @@ input {
 
 .tip-button {
     background-color: hsl(183, 100%, 15%);
-    height: 39px;
+    height: 35px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -84,6 +84,7 @@ input {
     font-weight: 700;
     color: white;
     border-radius: 5px;
+    border: 2px solid transparent;
 }
 
 .tip-button:hover {
