@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/FM-Tip-Calculator-App/static/css/main.34641a22.chunk.css",
+    "main.js": "/FM-Tip-Calculator-App/static/js/main.2d562a74.chunk.js",
+    "main.js.map": "/FM-Tip-Calculator-App/static/js/main.2d562a74.chunk.js.map",
+    "runtime-main.js": "/FM-Tip-Calculator-App/static/js/runtime-main.6cdc3eb5.js",
+    "runtime-main.js.map": "/FM-Tip-Calculator-App/static/js/runtime-main.6cdc3eb5.js.map",
+    "static/js/2.0c07cca2.chunk.js": "/FM-Tip-Calculator-App/static/js/2.0c07cca2.chunk.js",
+    "static/js/2.0c07cca2.chunk.js.map": "/FM-Tip-Calculator-App/static/js/2.0c07cca2.chunk.js.map",
+    "static/js/3.c6e2e2f6.chunk.js": "/FM-Tip-Calculator-App/static/js/3.c6e2e2f6.chunk.js",
+    "static/js/3.c6e2e2f6.chunk.js.map": "/FM-Tip-Calculator-App/static/js/3.c6e2e2f6.chunk.js.map",
+    "index.html": "/FM-Tip-Calculator-App/index.html",
+    "static/css/main.34641a22.chunk.css.map": "/FM-Tip-Calculator-App/static/css/main.34641a22.chunk.css.map",
+    "static/js/2.0c07cca2.chunk.js.LICENSE.txt": "/FM-Tip-Calculator-App/static/js/2.0c07cca2.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6cdc3eb5.js",
+    "static/js/2.0c07cca2.chunk.js",
+    "static/css/main.34641a22.chunk.css",
+    "static/js/main.2d562a74.chunk.js"
+  ]
+}
