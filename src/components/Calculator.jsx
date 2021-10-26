@@ -13,8 +13,8 @@ export default class Calculator extends React.Component {
             tip: null,
             people: null,
             inputPeople: null,
-            totalTip: 0.00,
-            totalBill: 0.00,
+            totalTip: Number(0.00).toFixed(2),
+            totalBill: Number(0.00).toFixed(2),
             activeTip: -1,
         }
 
@@ -36,6 +36,9 @@ export default class Calculator extends React.Component {
             totalTip = Number.isFinite(totalTip) ? totalTip : 0.00;
             totalBill = Number.isFinite(totalBill) ? totalBill : 0.00;
             
+            totalTip = Number(totalTip).toFixed(2);
+            totalBill = Number(totalBill).toFixed(2);
+
             this.setState({ totalTip, totalBill });
         }
     }
@@ -100,18 +103,18 @@ export default class Calculator extends React.Component {
                             <p className="amount">Tip Amount</p>
                             <p className="person">/ person</p>
                         </div>
-                        <div className="price">
+                        <p className="price">
                             ${totalTip}
-                        </div>
+                        </p>
                     </div>
                     <div className="output-field">
                         <div className="texts">
-                            <p className="amount">Tip Amount</p>
+                            <p className="amount">Total</p>
                             <p className="person">/ person</p>
                         </div>
-                        <div className="price">
+                        <p className="price">
                             ${totalBill}
-                        </div>
+                        </p>
                     </div>
                     <button className="reset" onClick={this.resetData} disabled={buttonDisabled}>
                         RESET
