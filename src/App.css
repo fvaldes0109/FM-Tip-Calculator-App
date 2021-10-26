@@ -80,6 +80,7 @@ input {
     color: white;
     border-radius: 5px;
     border: 2px solid transparent;
+    transition: background-color 0.2s, color 0.2s;
 }
 
 .tip-button:hover {
