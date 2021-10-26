@@ -39,6 +39,7 @@ export default class Input extends React.Component {
                     src={`./images/icon-${name === 'bill' ? 'dollar' : 'person'}.svg`}
                 />
                 <input
+                    size="3"
                     placeholder="0"
                     value={value}
                     onChange={(event) => {this.checkField(name, event.target.value)}}

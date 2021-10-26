@@ -23,6 +23,7 @@ main {
     border-radius: 15px;
     display: flex;
     justify-content: space-between;
+    min-width: 610px;
 }
 
 .left {
@@ -112,6 +113,7 @@ input {
 .upper-text {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .left p.error-message {
@@ -179,4 +181,42 @@ button:active {
 
 .fieldname {
     margin: 5px 0;
+}
+
+@media(max-width: 700px) {
+    body {
+        justify-content: center;
+    }
+
+    header {
+        margin: 40px 0;
+    }
+
+    main {
+        flex-direction: column;
+        min-width: auto;
+        width: 90%;
+        padding: 25px 2.5%;
+        margin: 0 2.5%;
+    }
+
+    .left {
+        width: 100%;
+    }
+
+    .right {
+        width: 90%;
+        margin: 20px 0;
+    }
+
+    button {
+        position: static;
+        margin: 0 0 20px;
+    }
+}
+
+@media(max-width: 400px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
