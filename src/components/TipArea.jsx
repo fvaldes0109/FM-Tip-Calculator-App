@@ -7,7 +7,7 @@ export default class TipArea extends React.Component {
         super(props);
 
         this.state = {
-            focused: true,
+            focused: false,
         }
 
         this.tipSelect = this.tipSelect.bind(this);
