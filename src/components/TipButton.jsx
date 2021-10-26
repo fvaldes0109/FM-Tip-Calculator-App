@@ -6,7 +6,7 @@ export default function TipButton(props) {
             className={`tip-button${props.isActive === 'true' ? ' isActive' : ''}`}
             onClick={props.onFinish}
         >
-            {props.pcvalue}
+            {props.pcvalue}%
         </div>
     )
 }

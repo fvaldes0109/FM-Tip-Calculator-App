@@ -73,12 +73,7 @@ export default class Calculator extends React.Component {
                         />
                     </div>
                     <div className="tip area">
-                        <div className="upper-text">
-                            <p className="fieldname">Select Tip %</p>
-                            <p className={inputPeople !== '0' ? 'error-message' : 'invisible'}>
-                                Can't be zero
-                            </p>
-                        </div>
+                        <p className="fieldname">Select Tip %</p>
                         <TipArea
                             activeTip={activeTip}
                             inputValue={tip && activeTip === 6 ? tip : ''}
@@ -86,8 +81,12 @@ export default class Calculator extends React.Component {
                         />
                     </div>
                     <div className="people area">
-                        <p className="fieldname">Number of People</p>
-
+                        <div className="upper-text">
+                            <p className="fieldname">Number of People</p>
+                            <p className={inputPeople === '0' ? 'error-message' : 'invisible'}>
+                                Can't be zero
+                            </p>
+                        </div>
                         <Input
                             name="people"
                             value={inputPeople ? inputPeople : ''}

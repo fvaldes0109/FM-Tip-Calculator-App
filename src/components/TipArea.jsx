@@ -6,8 +6,13 @@ export default class TipArea extends React.Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            focused: true,
+        }
+
         this.tipSelect = this.tipSelect.bind(this);
         this.checkField = this.checkField.bind(this);
+        this.setFocus = this.setFocus.bind(this);
     }
 
     tipSelect(index, value) {
@@ -23,8 +28,13 @@ export default class TipArea extends React.Component {
         }
     }
 
+    setFocus(flag) {
+        this.setState({ focused: flag })
+    }
+
     render() {
         const { activeTip, inputValue } = this.props;
+        const { focused } = this.state;
         return(
             <div className="grid-container">
                 <TipButton isActive={activeTip === 1 ? "true" : "false"} pcvalue={5} onFinish={() => this.tipSelect(1, 5)} />
@@ -33,10 +43,12 @@ export default class TipArea extends React.Component {
                 <TipButton isActive={activeTip === 4 ? "true" : "false"} pcvalue={25} onFinish={() => this.tipSelect(4, 25)} />
                 <TipButton isActive={activeTip === 5 ? "true" : "false"} pcvalue={50} onFinish={() => this.tipSelect(5, 50)} />
                 <input
-                    className={`tip-input${activeTip === 6 ? ' isActive' : ''}`}
-                    placeholder="CUSTOM"
+                    className={`tip-input ${focused ? 'focused' : ''}`}
+                    placeholder="Custom"
                     value={inputValue}
                     onChange={this.checkField}
+                    onFocus={() => this.setFocus(true)}
+                    onBlur={() => this.setFocus(false)}
                 />
             </div>
         );
